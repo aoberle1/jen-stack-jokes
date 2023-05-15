@@ -4,14 +4,19 @@ $( document ).ready( onReady );
 
 function onReady() {
     console.log('DOM ready');
+    // when submit button is clicked, run function addJokes
     $('#addJokeButton').on('click', addJokes )
+    // upon page load, runs the function getJokes
     getJokes();
 }
 
+// function using ajax GET
 function getJokes(){
     $.ajax({
         method: 'GET',
+        // matches server side get path
         url: '/jokes'
+        // after GET request, then once we have a response, run the renderToDom function
     }).then(function(response){
         console.log( 'Success!', response );
         // calling function renderToDom and using our response as the argument
@@ -23,7 +28,6 @@ function getJokes(){
 }
 
 function renderToDom(jokes){
-    $('#inventory-table-body').empty();
     for (let joke of jokes){
         $('#outputDiv').append(`
         <div>
