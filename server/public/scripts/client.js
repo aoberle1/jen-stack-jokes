@@ -27,6 +27,8 @@ function renderToDom(jokes){
         $('#outputDiv').append(`
         <div>
             <p>${joke.jokeQuestion}<p>
+            <p>${joke.punchLine}</p>
+            <p>Direct your groans to: ${joke.whoseJoke}</p>
         </div>
         `);
     }
