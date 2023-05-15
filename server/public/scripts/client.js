@@ -28,6 +28,7 @@ function getJokes(){
 }
 
 function renderToDom(jokes){
+    $('#outputDiv').empty();
     // for loop that loops through jokes array which is received as response from ajax GET
     for (let joke of jokes){
         $('#outputDiv').append(`
