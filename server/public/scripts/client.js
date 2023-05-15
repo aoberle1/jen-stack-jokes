@@ -34,7 +34,7 @@ function renderToDom(jokes){
         <div>
             <p>${joke.jokeQuestion}<p>
             <p>${joke.punchLine}</p>
-            <p>Direct your groans to: ${joke.whoseJoke}</p>
+            <p>Direct your groans to: <b>${joke.whoseJoke}</b></p>
             <br>
         </div>
         `);
