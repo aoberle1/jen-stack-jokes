@@ -28,6 +28,7 @@ function getJokes(){
 }
 
 function renderToDom(jokes){
+    // for loop that loops through jokes array which is received as response from ajax GET
     for (let joke of jokes){
         $('#outputDiv').append(`
         <div>
@@ -55,6 +56,7 @@ $('#punchlineIn').val('');
 $.ajax({
     method: 'POST',
     url: '/jokes',
+    // data being posted will be an object with 3 inputs
     data: {
     whoseJoke,
     jokeQuestion,
