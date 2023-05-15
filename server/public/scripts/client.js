@@ -4,6 +4,7 @@ $( document ).ready( onReady );
 
 function onReady() {
     console.log('DOM ready');
+    $('#addJokeButton').on('click', addJokes )
     getJokes();
 }
 
@@ -29,7 +30,37 @@ function renderToDom(jokes){
             <p>${joke.jokeQuestion}<p>
             <p>${joke.punchLine}</p>
             <p>Direct your groans to: ${joke.whoseJoke}</p>
+            <br>
         </div>
         `);
     }
+}
+
+function addJokes(event){
+    event.preventDefault();
+const whoseJoke = $('#whoseJokeIn').val();
+const jokeQuestion = $('#questionIn').val()
+const punchLine = $('#punchlineIn').val()
+
+
+// emptying out input fields
+$('#whoseJokeIn').val('');
+$('#questionIn').val('');
+$('#punchlineIn').val('');
+
+$.ajax({
+    method: 'POST',
+    url: '/jokes',
+    data: {
+    whoseJoke,
+    jokeQuestion,
+    punchLine
+    }
+    }).then(function(response){
+        console.log( 'Success!' )
+        getJokes();
+    }).catch(function(error) {
+        alert('Error with inventory post!')
+        console.log('Error with post:', error)
+    })
 }

@@ -39,6 +39,12 @@ app.get('/jokes', (req, res) => {
   res.send(jokes);
 })
 
+app.post('/jokes', (req, res) => {
+  console.log('POST some data:', req.body);
+  jokes.push(req.body)
+  res.sendStatus(201)
+});
+
 // serve back static files
 app.use(express.static('server/public'));
 
